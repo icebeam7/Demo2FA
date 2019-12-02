@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Demo2FA.ViewModels"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:custom="clr-namespace:Demo2FA.CustomControls"
+             mc:Ignorable="d"
+             x:Class="Demo2FA.Views.SignUpView"
+             Visual="Material"
+             BackgroundColor="#7698f3"
+             Title="Sign Up">
+
+    <ContentPage.BindingContext>
+        <vm:SignUpViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid HorizontalOptions="Center" 
+              VerticalOptions="Center" 
+              Margin="10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <pancakeView:PancakeView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                                     HeightRequest="40" BackgroundColor="Transparent" CornerRadius="5" 
+                                     BorderThickness="1" BorderColor="White" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           Grid.Column="0"
+                                           Aspect="AspectFill">
+                        <Image.Source>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}"
+                                             Glyph="{x:Static custom:FontAwesomeIcons.Envelope}"
+                                             Color="White"
+                                             Size="20" />
+                        </Image.Source>
+                    </Image>
+                    <custom:CustomEntry BackgroundColor="Transparent"
+                                        TextColor="White"
+                                        PlaceholderColor="White"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Fill"
+                                        Placeholder="Name"
+                                        Text="{Binding CompanyUser.Name}"
+                                        Grid.Column="1" />
+                </Grid>
+            </pancakeView:PancakeView>
+
+            <pancakeView:PancakeView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                                     HeightRequest="40" BackgroundColor="Transparent" CornerRadius="5" 
+                                     BorderThickness="1" BorderColor="White" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Grid.Column="0"
+                           Aspect="AspectFill">
+                        <Image.Source>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}"
+                                             Glyph="{x:Static custom:FontAwesomeIcons.Envelope}"
+                                             Color="White"
+                                             Size="20" />
+                        </Image.Source>
+                    </Image>
+                    <custom:CustomEntry BackgroundColor="Transparent"
+                                        TextColor="White"
+                                        PlaceholderColor="White"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Fill"
+                                        Placeholder="Email"
+                                        Text="{Binding CompanyUser.Email}"
+                                        Grid.Column="1" />
+                </Grid>
+            </pancakeView:PancakeView>
+
+            <pancakeView:PancakeView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
+                                     HeightRequest="40" BackgroundColor="Transparent" CornerRadius="5" 
+                                     BorderThickness="1" BorderColor="White" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Image HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Grid.Column="0"
+                           Aspect="AspectFill">
+                        <Image.Source>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}"
+                                             Glyph="{x:Static custom:FontAwesomeIcons.Envelope}"
+                                             Color="White"
+                                             Size="20" />
+                        </Image.Source>
+                    </Image>
+                    <custom:CustomEntry BackgroundColor="Transparent"
+                                        TextColor="White"
+                                        PlaceholderColor="White"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Fill"
+                                        Placeholder="Code"
+                                        Text="{Binding CompanyUser.CountryCode}"
+                                        Grid.Column="1" />
+
+                    <custom:CustomEntry BackgroundColor="Transparent"
+                                        TextColor="White"
+                                        PlaceholderColor="White"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Fill"
+                                        Placeholder="Phone"
+                                        Text="{Binding CompanyUser.Cellphone}"
+                                        Grid.Column="2" />
+                </Grid>
+            </pancakeView:PancakeView>
+
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Text="Cellphone"/>
+
+            <Button TextColor="White" Text="Sign Up" Command="{Binding SignUpCommand}" BackgroundColor="#93c393" 
+                    BorderColor="DarkSeaGreen" BorderWidth="1" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+            <Label Grid.Row="5"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   Text="{Binding AuthyUserResponse.Message}"/>
+
+            <Label Grid.Row="6"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   Text="{Binding AuthyOTPResponse.Message}"/>
+
+            <pancakeView:PancakeView Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" 
+                                     IsVisible="{Binding NeedsVerification}"
+                                     HeightRequest="40" BackgroundColor="Transparent" CornerRadius="5" 
+                                     BorderThickness="1" BorderColor="White" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Grid.Column="0"
+                           Aspect="AspectFill">
+                        <Image.Source>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}"
+                                             Glyph="{x:Static custom:FontAwesomeIcons.Envelope}"
+                                             Color="White"
+                                             Size="20" />
+                        </Image.Source>
+                    </Image>
+                    <custom:CustomEntry BackgroundColor="Transparent"
+                                        TextColor="White"
+                                        PlaceholderColor="White"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Fill"
+                                        Placeholder="PIN Code"
+                                        Text="{Binding Token}"
+                                        Grid.Column="1" />
+                </Grid>
+            </pancakeView:PancakeView>
+
+            <Button TextColor="White" Text="Verify" Command="{Binding VerifyTokenCommand}" BackgroundColor="#93c393" 
+                    IsVisible="{Binding NeedsVerification}"
+                    BorderColor="DarkSeaGreen" BorderWidth="1" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+            <Label Grid.Row="9"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding NeedsVerification}"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   Text="{Binding AuthyVerifyResponse.Message}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
